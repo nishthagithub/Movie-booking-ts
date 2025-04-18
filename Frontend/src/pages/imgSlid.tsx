@@ -99,84 +99,84 @@ const handlePrev = () => {
 
       {/* Image Display */}
       <Box display="flex" flexDirection="row" gap={7} overflow="hidden">
-        {movies.slice(0, isMobile ? 1 : isTablet ? 1 : 2).map((movie,i) => {
-const imgIndex = (index + i) % movies.length;
-           const handleImageClick = (imgIndex:any) => {
-             navigate(`/movie/${imgIndex}`, {
-               state: { movie: movies[imgIndex] },
-             });
-           };
-          return (
-            <Box
-              key={movie.movie_id}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Link
-                to={`/movie/${movies[imgIndex].movie_id}`}
-                onClick={() => {
-                  dispatch(resetSlot());
-               
+        {Array.isArray(movies) &&
+          movies.slice(0, isMobile ? 1 : isTablet ? 1 : 2).map((movie, i) => {
+            const imgIndex = (index + i) % movies.length;
+            const handleImageClick = (imgIndex: any) => {
+              navigate(`/movie/${imgIndex}`, {
+                state: { movie: movies[imgIndex] },
+              });
+            };
+            return (
+              <Box
+                key={movie.movie_id}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                <Box
-                  sx={{
-                    width: { xs: "300px", sm: "380px", md: "500px" },
-                    height: { xs: "auto", sm: "auto", md: "650px" },
-                    borderRadius: "12px",
-                    overflow: "hidden",
+                <Link
+                  to={`/movie/${movies[imgIndex].movie_id}`}
+                  onClick={() => {
+                    dispatch(resetSlot());
                   }}
                 >
-                  <img
-                    src={movies[imgIndex].movie_poster}
-                    alt="Movie Poster"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
+                  <Box
+                    sx={{
+                      width: { xs: "300px", sm: "380px", md: "500px" },
+                      height: { xs: "auto", sm: "auto", md: "650px" },
                       borderRadius: "12px",
+                      overflow: "hidden",
                     }}
-                    onClick={() =>
-                      navigate(`/movie/${movies[imgIndex].movie_id}`)
-                    }
-                  />
-                </Box>
-              </Link>
+                  >
+                    <img
+                      src={movies[imgIndex].movie_poster}
+                      alt="Movie Poster"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "12px",
+                      }}
+                      onClick={() =>
+                        navigate(`/movie/${movies[imgIndex].movie_id}`)
+                      }
+                    />
+                  </Box>
+                </Link>
 
-              {/* Movie Title (Only shown in Tablet and Desktop) */}
-              <Typography variant="h5" mt={2} textAlign="center">
-                {movies[imgIndex].movie_title}
-              </Typography>
-              <Box display="flex" justifyContent="center" gap={2} mt={2}>
-                <Button
-                  variant="contained"
-                  sx={{
-                    background:
-                      "linear-gradient(to right ,rgba(242, 196, 111, 1),rgba(198, 148, 63, 1))",
-                    "&:hover": { bgcolor: "rgba(198, 148, 63, 1)" },
-                  }}
-                >
-                  XXI
-                </Button>
-                <Button
-                  variant="contained"
-                  sx={{ bgcolor: "rgba(236, 30, 43, 1)" }}
-                >
-                  CGV
-                </Button>
-                <Button
-                  variant="contained"
-                  sx={{ bgcolor: "rgba(0, 14, 98, 1)" }}
-                >
-                  CinePolis
-                </Button>
+                {/* Movie Title (Only shown in Tablet and Desktop) */}
+                <Typography variant="h5" mt={2} textAlign="center">
+                  {movies[imgIndex].movie_title}
+                </Typography>
+                <Box display="flex" justifyContent="center" gap={2} mt={2}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      background:
+                        "linear-gradient(to right ,rgba(242, 196, 111, 1),rgba(198, 148, 63, 1))",
+                      "&:hover": { bgcolor: "rgba(198, 148, 63, 1)" },
+                    }}
+                  >
+                    XXI
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={{ bgcolor: "rgba(236, 30, 43, 1)" }}
+                  >
+                    CGV
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={{ bgcolor: "rgba(0, 14, 98, 1)" }}
+                  >
+                    CinePolis
+                  </Button>
+                </Box>
               </Box>
-            </Box>
-          );
-        })}
+            );
+          })}
       </Box>
 
       {/* Right Arrow (Hidden in Mobile) */}

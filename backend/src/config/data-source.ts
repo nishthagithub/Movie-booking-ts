@@ -1,12 +1,5 @@
 import { DataSource } from "typeorm";
 import dotenv from "./dotenv";
-import { User } from "../Modals/User";
-import { Movies } from "../Modals/Movies";
-import { Cities } from "../Modals/City";
-import { Day } from "../Modals/day";
-import { Theater } from "../Modals/Theater";
-import { SlotData } from "../Modals/SlotData";
-import { SlotType } from "../Modals/SlotType";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
