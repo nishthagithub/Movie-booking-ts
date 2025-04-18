@@ -20,7 +20,8 @@ import fileupload from "express-fileupload"
 import { handleStripeWebhook } from "./controllers/webhookController";
 
  dotenv.config();
-const port = process.env.PORT
+const PORT = process.env.PORT || 8080;
+// console.log(port)
 const app = express();
 app.post(
   "/api/stripe/webhook",
@@ -59,9 +60,9 @@ app.use("/api/news",newsRoutes)
 AppDataSource.initialize()
   .then(() => {
     console.log("Database connected");
-    app.listen(port,()=>{
- console.log(`App running on http://localhost:${port}`); 
-   })
+    app.listen(PORT, () => {
+      console.log(`App running on http://localhost:${PORT}`);
+    });
   })
   .catch((error) => console.log(error));
   export default app;
