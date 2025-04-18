@@ -36,6 +36,7 @@ const Login = () => {
   };
 
    const API_URL = process.env.REACT_APP_URL;
+   console.log("API_URL:", process.env.REACT_APP_API_URL); 
 
 
   // const newauth = localStorage.getItem("isAuthenticated") === "true";
